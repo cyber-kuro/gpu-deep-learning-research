@@ -75,32 +75,4 @@ Result device: cuda:0
 **Result: PASS.** PyTorch detected the RTX 5090 and completed a
 1024 × 1024 matrix multiplication with the result stored on `cuda:0`.
 
-## Record remaining environment details
 
-To make this milestone reproducible, run these in Ubuntu:
-
-```bash
-python --version
-cat /etc/os-release
-nvidia-smi
-python -c "import torch; print('PyTorch CUDA runtime:', torch.version.cuda)"
-```
-
-Record the Python version, Ubuntu release, NVIDIA driver version, and relevant
-CUDA runtime details here once collected. Do not commit passwords, tokens,
-private credentials, or the `.venv/` directory.
-
-## Issues and fixes
-
-- Git initially reported an unknown author identity.
-- Configured `git config --global user.name` and `user.email` to resolve
-  the identity error (email is intentionally not published here).
-
-## Completion checklist
-
-- [x] CUDA-enabled PyTorch recognizes the RTX 5090
-- [x] `gpu_check.py` runs successfully
-- [x] Observed GPU test results documented
-- [x] Milestone documentation committed to GitHub
-- [ ] Record exact Python version and Ubuntu release
-- [ ] Record NVIDIA driver version and exact PyTorch install command
