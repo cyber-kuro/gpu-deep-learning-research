@@ -10,7 +10,7 @@ that the NVIDIA GeForce RTX 5090 can execute matrix multiplication on the GPU.
 | Item | Verified value |
 | --- | --- |
 | GPU | NVIDIA GeForce RTX 5090 |
-| OS | Ubuntu on WSL (exact version not yet recorded) |
+| OS | Ubuntu on WSL |
 | Python | Version not yet recorded |
 | PyTorch | `2.15.0+cu134` |
 | PyTorch CUDA build | `cu134` (CUDA 13.4) |
