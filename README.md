@@ -6,7 +6,7 @@ A milestone-based repository for learning GPU programming and deep learning with
 
 | Milestone | Description | Status |
 | --- | --- | --- |
-| 01 | Set up the Python environment and verify GPU acceleration | GPU test passed; environment details pending |
+| 01 | Set up the Python environment and verify GPU acceleration | Completed — GPU test passed; hardware/software documented |
 
 ## Project structure
 
