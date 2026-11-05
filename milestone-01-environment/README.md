@@ -84,40 +84,4 @@ Result device: cuda:0
 1,024 × 1,024 matrix multiplication, keeping the result on the GPU
 (`cuda:0`).
 
-### Additional system checks
 
-On November 1, 2026, these commands were run from
-`~/research/gpu-deep-learning-research`:
-
-```bash
-python --version
-cat /etc/os-release
-nvidia-smi
-python -c "import torch; print(torch.version.cuda)"
-```
-
-They reported Python 3.12.3, Ubuntu 24.04.5 LTS, the NVIDIA driver versions
-listed above, and PyTorch CUDA 13.4.
-
-## Troubleshooting / lessons learned
-
-- Git initially rejected a commit because the author identity was missing.
-  Set `git config --global user.name` and `git config --global user.email`;
-  the private email address is intentionally not recorded here.
-- The original `~/research/gpu-dl` workspace and cloned
-  `~/research/gpu-deep-learning-research` repository are separate directories.
-  The successful test ran from the former; the documented script is stored in
-  the latter.
-
-## Checklist
-
-- [x] Ubuntu and Python version recorded
-- [x] RTX 5090, compute capability, and CUDA availability verified
-- [x] PyTorch version and CUDA build recorded
-- [x] NVIDIA driver information recorded
-- [x] GPU matrix multiplication completed successfully
-- [x] Results documented in GitHub
-- [ ] Optional: capture the exact PyTorch installation command and the
-      interpreter path from the original `.venv` for full reproducibility
-
-> Do not commit virtual environments, secrets, access tokens, or credentials.
