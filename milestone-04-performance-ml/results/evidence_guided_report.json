@@ -1,0 +1,131 @@
+{
+  "timestamp_local": "2026-11-09T16:34:36.610012-06:00",
+  "workload": {
+    "M": 512,
+    "N": 1024,
+    "K": 256,
+    "dtype": "float16"
+  },
+  "environment": {
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "pytorch": "2.15.0+cu132",
+    "triton": "3.9.0",
+    "cuda_build": "13.2",
+    "benchmark": "triton.testing.do_bench_cudagraph",
+    "repetition_budget_ms": 100,
+    "timing_trials": 5
+  },
+  "configurations": {
+    "A": [
+      32,
+      64,
+      32,
+      4
+    ],
+    "B": [
+      64,
+      64,
+      32,
+      4
+    ]
+  },
+  "profile_metrics": {
+    "A": {
+      "duration_us": 4.74,
+      "grid_blocks": 256.0,
+      "registers_per_thread": 54.0,
+      "shared_memory_kb_per_block": 12.29,
+      "achieved_occupancy_percent": 12.51,
+      "theoretical_occupancy_percent": 58.33,
+      "compute_throughput_percent": 27.53,
+      "dram_throughput_percent": 9.67,
+      "l2_throughput_percent": 45.47
+    },
+    "B": {
+      "duration_us": 4.74,
+      "grid_blocks": 128.0,
+      "registers_per_thread": 86.0,
+      "shared_memory_kb_per_block": 16.38,
+      "achieved_occupancy_percent": 8.31,
+      "theoretical_occupancy_percent": 41.67,
+      "compute_throughput_percent": 27.42,
+      "dram_throughput_percent": 9.8,
+      "l2_throughput_percent": 30.77
+    }
+  },
+  "mlp_predicted_latency_ms": {
+    "A": 0.004143939819186926,
+    "B": 0.004401220940053463
+  },
+  "mlp_preferred_configuration": "A",
+  "proposal": {
+    "baseline": "A",
+    "candidate": "B",
+    "hypothesis": "Test increasing BLOCK_M from 32 to 64 while holding BLOCK_N, BLOCK_K, and num_warps fixed. The larger tile may improve work efficiency, but it also reduces grid size and occupancy."
+  },
+  "correctness": {
+    "passed": true,
+    "max_abs_error_by_seed": {
+      "A": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "B": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "atol": 0.02,
+    "rtol": 0.01
+  },
+  "timing_rounds": [
+    {
+      "trial": 1,
+      "A_ms": 0.003093196804743694,
+      "B_ms": 0.0027565751645815617,
+      "measurement_order": "B-A"
+    },
+    {
+      "trial": 2,
+      "A_ms": 0.0030968733133855016,
+      "B_ms": 0.0027699135302090227,
+      "measurement_order": "B-A"
+    },
+    {
+      "trial": 3,
+      "A_ms": 0.0030990431443700247,
+      "B_ms": 0.0027677525299841833,
+      "measurement_order": "A-B"
+    },
+    {
+      "trial": 4,
+      "A_ms": 0.0030981683996101892,
+      "B_ms": 0.0027682041199879742,
+      "measurement_order": "B-A"
+    },
+    {
+      "trial": 5,
+      "A_ms": 0.0030995786237602505,
+      "B_ms": 0.0027717929551649653,
+      "measurement_order": "B-A"
+    }
+  ],
+  "measured_median_latency_ms": {
+    "A": 0.0030981683996101892,
+    "B": 0.0027682041199879742
+  },
+  "speedup_B_over_A": 1.1191979584307707,
+  "B_faster_rounds": 5,
+  "decision": "ACCEPT_B",
+  "decision_rule": "Accept B only when median speedup >= 1.02x and B is faster in >= 4/5 timing rounds",
+  "limitations": [
+    "One workload, two preselected configurations, one GPU; not a general optimizer.",
+    "Profiler counters characterize resource usage but do not prove why B is faster.",
+    "Nsight instrumented duration is not compared with CUDA Graph timing.",
+    "Acceptance thresholds are practical heuristics, not statistical significance tests.",
+    "MLP is frozen; this run does not retrain it or change the held-out test results.",
+    "This is a controlled fixed-candidate study, not automatic LLM code editing."
+  ]
+}
