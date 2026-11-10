@@ -19,6 +19,14 @@ The work progresses from CUDA/PyTorch fundamentals to measured GPU kernels, supe
 
 **Start here:** [Milestone 4 technical details](milestone-04-performance-ml/README.md) · [Research report](docs/research_report.md) · [Optimization case study](docs/optimization_case_study.md)
 
+## Technical Research Report
+
+A detailed technical report documenting the experimental methodology, GPU benchmarking, performance prediction models, Triton autotuning, hardware profiling, and evidence-guided optimization.
+
+The report includes experimental results, visualizations, model comparisons, limitations, and references.
+
+**[Read the Full Technical Report (PDF)](docs/GPU_Performance_Optimization_Technical_Report.pdf)**
+
 ## Research Focus
 
 GPU performance depends on more than the number of floating-point operations. Matrix dimensions, execution tiles, parallelism, memory behavior, and hardware resource limits can all affect latency. A configuration that works well for one workload may be less effective for another.
